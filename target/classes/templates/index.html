@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${name} + ' — Portfolio'">Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<nav>
+    <a class="brand" href="#hero" th:text="${name}">Name</a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Projects</a>
+        <a href="#experience">Career</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact" class="cta">Let's Talk</a>
+    </div>
+</nav>
+
+<section id="hero" class="hero-section">
+    <div class="hero-copy">
+        <p class="eyebrow" th:text="${subtitle}">Software Developer</p>
+        <h1 th:text="${name}">Your Name</h1>
+        <p class="hero-description" th:text="${intro}">Intro text goes here.</p>
+        <div class="hero-actions">
+            <a href="#work" class="button primary">View Projects</a>
+            <a href="#contact" class="button secondary">Get in Touch</a>
+        </div>
+        <p class="hero-status" th:text="${status}">Open to opportunities</p>
+    </div>
+    <div class="hero-stats">
+        <div class="stat-card">
+            <span>5+</span>
+            <p>Projects Shipped</p>
+        </div>
+        <div class="stat-card">
+            <span>2+</span>
+            <p>Publications / IP</p>
+        </div>
+        <div class="stat-card">
+            <span>3</span>
+            <p>Internships</p>
+        </div>
+        <div class="stat-card">
+            <span>9</span>
+            <p>Certificates</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section-panel">
+    <div class="section-header">
+        <p class="section-tag">About Me</p>
+        <h2>Developer &amp; <em>Problem Solver</em></h2>
+    </div>
+    <div class="content-grid">
+        <div>
+            <p th:text="${intro}">Intro paragraph 1.</p>
+            <p>I enjoy working on real-world problems and turning ideas into functional products. I continuously explore new technologies and improve my skills through projects and learning.</p>
+            <div class="info-grid">
+                <div>
+                    <span class="label">Location</span>
+                    <p th:text="${location}">City / Remote</p>
+                </div>
+                <div>
+                    <span class="label">Education</span>
+                    <p th:text="${education}">B.Tech CSE</p>
+                </div>
+                <div>
+                    <span class="label">Languages</span>
+                    <p th:text="${languages}">English</p>
+                </div>
+                <div>
+                    <span class="label">Status</span>
+                    <p class="status" th:text="${status}">Open</p>
+                </div>
+            </div>
+            <div class="contact-buttons">
+                <a th:href="@{'mailto:' + ${contactEmail}}">✉ Email</a>
+                <a th:href="${linkedin}" target="_blank">in LinkedIn</a>
+                <a th:href="${github}" target="_blank">⌥ GitHub</a>
+            </div>
+        </div>
+        <div>
+            <div class="skills-panel">
+                <h3>Core Skills</h3>
+                <div th:each="skill : ${skills}" class="skill-entry">
+                    <span class="skill-name" th:text="${skill[0]}">Python</span>
+                    <div class="skill-bar">
+                        <div class="skill-fill" th:style="${'width:' + skill[2] + '%'}"></div>
+                    </div>
+                    <span class="skill-meta" th:text="${skill[1]}">Expert</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="work" class="section-panel">
+    <div class="section-header">
+        <p class="section-tag">Projects</p>
+        <h2>Selected <em>Work</em></h2>
+    </div>
+    <div class="project-grid">
+        <div th:each="project : ${projects}" class="project-card">
+            <div class="project-top">
+                <h3 th:text="${project.title}">Project Title</h3>
+                <a th:href="${project.url}" target="_blank">↗</a>
+            </div>
+            <p th:text="${project.description}">Project description</p>
+            <div class="project-footer">
+                <span th:text="${project.tags}">Tags</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="section-panel">
+    <div class="section-header">
+        <p class="section-tag">Career</p>
+        <h2>Career <em>History</em></h2>
+    </div>
+    <div class="experience-grid">
+        <div th:each="experience : ${experiences}" class="experience-card">
+            <span class="experience-date" th:text="${experience.date}">Date</span>
+            <h3 th:text="${experience.role}">Role</h3>
+            <p class="company" th:text="${experience.company}">Company</p>
+            <p th:text="${experience.description}">Description</p>
+            <div class="tag-row">
+                <span th:each="tag : ${experience.tags}" class="tag" th:text="${tag}">Tag</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certificates" class="section-panel">
+    <div class="section-header">
+        <p class="section-tag">Credentials</p>
+        <h2>Verified <em>Certificates</em></h2>
+    </div>
+    <div class="certificate-grid">
+        <div th:each="certificate : ${certificates}" class="certificate-card">
+            <span class="certificate-icon">📄</span>
+            <h3 th:text="${certificate.title}">Certificate Name</h3>
+            <p class="issuer" th:text="${certificate.issuer}">Issuer</p>
+            <p class="date" th:text="${certificate.date}">Date</p>
+            <button type="button" class="view-btn" th:data-pdf="${certificate.pdfPath}" th:data-title="${certificate.title}" th:data-issuer="${certificate.issuer}">View Certificate</button>
+        </div>
+    </div>
+</section>
+
+<div class="modal-backdrop" id="certificate-modal" style="display:none">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <div>
+                <div class="modal-title" id="modal-title">Certificate Preview</div>
+                <div class="modal-subtitle" id="modal-issuer"></div>
+            </div>
+            <button type="button" class="modal-close" id="modal-close">✕</button>
+        </div>
+        <div class="modal-content">
+            <object id="modal-object" class="modal-object" type="application/pdf" aria-label="Certificate preview"></object>
+            <div class="modal-error" id="modal-error" style="display:none">
+                <p>Unable to preview this PDF inline.</p>
+                <a id="modal-download" href="#" target="_blank">Download certificate</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="contact" class="section-panel contact-panel">
+    <div>
+        <h2>Let's work<br/><em>together</em>.</h2>
+        <p>Open to internships, freelance work, and entry-level opportunities to apply and grow my development skills.</p>
+        <div class="contact-grid">
+            <a th:href="'https://mail.google.com/mail/?view=cm&fs=1&to=' + ${contactEmail} "target="_blank">✉ Email</a>
+            <a th:href="${linkedin}" target="_blank">in LinkedIn</a>
+            <a th:href="${github}" target="_blank">⌥ GitHub</a>
+            <a th:href="${resumeLink}">↓ Resume</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Designed &amp; developed by <span th:text="${name}">Name</span> — 2026</p>
+    <p>[ Open to work ]</p>
+</footer>
+
+<script>
+    const modal = document.getElementById('certificate-modal');
+    const modalObject = document.getElementById('modal-object');
+    const titleEl = document.getElementById('modal-title');
+    const issuerEl = document.getElementById('modal-issuer');
+    const errorEl = document.getElementById('modal-error');
+    const downloadLink = document.getElementById('modal-download');
+    const closeBtn = document.getElementById('modal-close');
+
+    document.querySelectorAll('.view-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const pdfPath = button.dataset.pdf;
+            const title = button.dataset.title;
+            const issuer = button.dataset.issuer;
+
+            titleEl.textContent = title;
+            issuerEl.textContent = issuer;
+            downloadLink.href = pdfPath;
+            modalObject.data = pdfPath;
+            modalObject.style.display = 'block';
+            errorEl.style.display = 'none';
+            modal.style.display = 'flex';
+        });
+    });
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modalObject.data = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+    window.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+</script>
+
+</body>
+</html>
