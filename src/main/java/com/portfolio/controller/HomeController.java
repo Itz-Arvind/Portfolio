@@ -23,7 +23,7 @@ public class HomeController {
         model.addAttribute("languages", "English (Fluent), Hindi (Native)");
         model.addAttribute("contactEmail", "arvinddhakad078@gmail.com");
         model.addAttribute("linkedin", "https://www.linkedin.com/in/arvind-dhakad/");
-        model.addAttribute("github", "https://github.com/arvinddhakad178");
+        model.addAttribute("github", "https://github.com/Itz-Arvind");
         model.addAttribute("resumeLink", "/resume/resume.pdf");
 
         model.addAttribute("skills", List.of(
