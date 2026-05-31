@@ -36,7 +36,7 @@ public class HomeController {
         ));
 
         model.addAttribute("projects", List.of(
-                // new Project("Car Rental Website", "Dynamic car rental platform that allows users to browse and rent cars based on availability and dates.", "HTML · Flask · Python", "https://github.com/Itzudii/Car-Rental-Website-Flask-python"),
+                new Project("Car Rental Website", "Dynamic car rental platform that allows users to browse and rent cars based on availability and dates.", "HTML · Flask · Python", "https://github.com/Itzudii/Car-Rental-Website-Flask-python")
                 // new Project("CortexFS", "AI-enhanced file indexing and semantic search engine powered by local LLMs.", "Python · AI", "https://github.com/Itzudii/CortexFS"),
                 // new Project("NEAT Flappy Bird", "AI agent that learns to play Flappy Bird using the NEAT neuroevolution algorithm.", "Python · Pygame · NEAT", "https://github.com/Itzudii/NEAT-Flappy-Bird"),
                 // new Project("Stock Prediction — LSTM", "Published research on predicting stock prices using deep learning and LSTM neural networks.", "Python · ML · LSTM", "http://www.jetir.org/view?paper=JETIR2407370"),
@@ -46,11 +46,11 @@ public class HomeController {
         model.addAttribute("experiences", List.of(
                 // new Experience("Dec 2025", "Full Stack Developer", "Eduskills Academy", "Worked on Python projects building scalable web applications and REST APIs with Flask.", List.of("Python", "Flask", "APIs")),
                 // new Experience("Jul 2025", "Python Developer", "CodeAlpha", "Built Flask web applications and web services during internship program.", List.of("Python", "Flask")),
-                // new Experience("2023–Present", "Student Developer", "Self Projects", "Multiple academic and personal projects in AI and web development — from LSTM stock prediction to a copyright-registered JS game library.", List.of("Python", "JavaScript", "AI/ML"))
+                new Experience("2023–Present", "Student Developer", "Self Projects", "Multiple academic and personal projects in AI and web development — from LSTM stock prediction to a copyright-registered JS game library.", List.of("Python", "JavaScript", "AI/ML"))
         ));
 
         model.addAttribute("certificates", List.of(
-                new Certificate("Claude with the Anthropic API", "Anthropic", "May 2026", "/certs/Certificate(Claude_API).pdf"),
+                new Certificate("Claude with the Anthropic API", "Anthropic", "May 2026", "/certs/Certificate(Claude_API).pdf")
                 // new Certificate("India AI Impact Buildathon", "AI Impact Summit", "Feb 2026", "/certs/Certificate(india_AI_Impact_buildathon).pdf"),
                 // new Certificate("Model Context Protocol: Advanced", "Anthropic", "March 2026", "/certs/Certificate(Model_Context_Protocol)Adv.pdf"),
                 // new Certificate("AI & ML on Google Cloud", "Google Cloud", "Sep 2024", "/certs/Certificate(Introduction_to_AI&ML_on_google_cloud).pdf"),
