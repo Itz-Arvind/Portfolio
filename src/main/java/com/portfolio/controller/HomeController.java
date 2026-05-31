@@ -50,7 +50,11 @@ public class HomeController {
         ));
 
         model.addAttribute("certificates", List.of(
-                new Certificate("Claude with the Anthropic API", "Anthropic", "May 2026", "/certs/Certificate(Claude_API).pdf")
+                new Certificate("Claude with the Anthropic API", "Anthropic", "May 2026", "/certs/Certificate(Claude_API).pdf"),
+                new Certificate("AWS Solutions Architect Associate Workshop", "Sage University Indore", "September 2024", "/certs/Certificate(AWS_Cloud).pdf"),
+                new Certificate("Python Programming", "Sage University Indore", "May 2024", "/certs/Certificate(Python).pdf"),
+                new Certificate("Java Programming", "Sage University Indore", "May 2024", "/certs/Certificate(Java).pdf")
+                
                 // new Certificate("India AI Impact Buildathon", "AI Impact Summit", "Feb 2026", "/certs/Certificate(india_AI_Impact_buildathon).pdf"),
                 // new Certificate("Model Context Protocol: Advanced", "Anthropic", "March 2026", "/certs/Certificate(Model_Context_Protocol)Adv.pdf"),
                 // new Certificate("AI & ML on Google Cloud", "Google Cloud", "Sep 2024", "/certs/Certificate(Introduction_to_AI&ML_on_google_cloud).pdf"),
